@@ -11,7 +11,7 @@ import useAuth from '../../../hooks/useAuth';
 
 const Navigation = () => {
     const { user, userLogout } = useAuth();
-    console.log(userLogout);
+
     return (
         <Box sx={{ flexGrow: 1 }}>
             <AppBar position="static" sx={{ py: 2, backgroundColor: '#FBFCFC' }} >
@@ -26,6 +26,7 @@ const Navigation = () => {
                             <NavLink style={{ textDecoration: 'none', fontWeight: 700, color: '#5B6569' }} to='/login'><Button color="inherit">Login</Button></NavLink>
                     }
                     <NavLink style={{ textDecoration: 'none', fontWeight: 700, color: '#5B6569' }} to='/purchase'><Button color="inherit">Purchase Product</Button></NavLink>
+                    <NavLink style={{ textDecoration: 'none', fontWeight: 700, color: '#5B6569' }} to='/exploreProducts'><Button color="inherit">Explore Products</Button></NavLink>
 
 
                 </Toolbar>

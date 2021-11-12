@@ -7,13 +7,16 @@ import {
   Link
 } from "react-router-dom";
 import Home from './Pages/Home/Home/Home';
-import About from './Pages/Home/About/About';
-import Dashboard from './Pages/Home/Dashboard/Dashboard';
+
+
 import Login from './Pages/Login/Login/Login';
 import Register from './Pages/Login/Register/Register';
 import AuthProvider from './contexts/AuthProvider/AuthProvider';
 import PurchaseProduct from './Pages/PurchaseProduct/PurchaseProduct/PurchaseProduct';
 import PrivateRoute from './Pages/Login/PrivateRoute/PrivateRoute';
+import AddProducts from './Pages/Shared/AddProducts/AddProducts';
+import ExploreAllProducts from './Pages/Home/ExploreAllProducts/ExploreAllProducts';
+import ProductDetaile from './Pages/ProductDetaile/ProductDetaile/ProductDetaile';
 
 function App() {
   return (
@@ -34,11 +37,20 @@ function App() {
             <Route path="/register">
               <Register></Register>
             </Route>
+            <Route path="/addProducts">
+              <AddProducts></AddProducts>
+            </Route>
+            <Route path="/exploreProducts">
+              <ExploreAllProducts></ExploreAllProducts>
+            </Route>
             <PrivateRoute path="/purchase">
               <PurchaseProduct></PurchaseProduct>
             </PrivateRoute>
+            <PrivateRoute path="/productDetaile/:productId">
+              <ProductDetaile></ProductDetaile>
+            </PrivateRoute>
             <Route path="/dashboard">
-              <Dashboard />
+
             </Route>
           </Switch>
 
