@@ -25,8 +25,11 @@ const Navigation = () => {
                             <Button style={{ fontWeight: 700, color: '#5B6569' }} onClick={userLogout} color="inherit">Logout</Button> :
                             <NavLink style={{ textDecoration: 'none', fontWeight: 700, color: '#5B6569' }} to='/login'><Button color="inherit">Login</Button></NavLink>
                     }
-                    <NavLink style={{ textDecoration: 'none', fontWeight: 700, color: '#5B6569' }} to='/purchase'><Button color="inherit">Purchase Product</Button></NavLink>
-                    <NavLink style={{ textDecoration: 'none', fontWeight: 700, color: '#5B6569' }} to='/exploreProducts'><Button color="inherit">Explore Products</Button></NavLink>
+
+                    {user?.email && <Box>
+                        <NavLink style={{ textDecoration: 'none', fontWeight: 700, color: '#5B6569' }} to='/exploreProducts'><Button color="inherit">Explore Products</Button></NavLink>
+                        <NavLink style={{ textDecoration: 'none', fontWeight: 700, color: '#5B6569' }} to='/dashboard'><Button color="inherit">Dashboard</Button></NavLink>
+                    </Box>}
 
 
                 </Toolbar>

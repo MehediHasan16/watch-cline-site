@@ -22,7 +22,9 @@ const useFirebase = () => {
             .then((userCredential) => {
                 setError('');
                 const newUserInfo = { email, displayName: name };
-                setUser(newUserInfo)
+                setUser(newUserInfo);
+                //sava user information database
+                saveUserData(email, name, 'POST')
                 // update firebase displayName 
                 updateProfile(auth.currentUser, {
                     displayName: name
@@ -76,6 +78,7 @@ const useFirebase = () => {
             .then((result) => {
 
                 const user = result.user;
+                saveUserData(user.email, user.displayName, 'PUT')
                 const destinationState = location?.state?.from || '/';
                 history.replace(destinationState);
                 setError('');
@@ -99,7 +102,16 @@ const useFirebase = () => {
         return () => unsubscribe;
     }, [])
 
+    const saveUserData = (email, displayName, method) => {
+        const user = { email, displayName };
+        fetch("http://localhost:5000/usersData", {
+            method: "POST",
+            headers: { "content-type": "application/json" },
+            body: JSON.stringify(user)
 
+        })
+            .then()
+    }
     return {
         user,
         isLoadingSpinara,

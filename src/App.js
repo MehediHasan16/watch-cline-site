@@ -17,6 +17,7 @@ import PrivateRoute from './Pages/Login/PrivateRoute/PrivateRoute';
 import AddProducts from './Pages/Shared/AddProducts/AddProducts';
 import ExploreAllProducts from './Pages/Home/ExploreAllProducts/ExploreAllProducts';
 import ProductDetaile from './Pages/ProductDetaile/ProductDetaile/ProductDetaile';
+import Dashboard from './Pages/Dashboard/Dashboard/Dashboard';
 
 function App() {
   return (
@@ -50,7 +51,7 @@ function App() {
               <ProductDetaile></ProductDetaile>
             </PrivateRoute>
             <Route path="/dashboard">
-
+              <Dashboard></Dashboard>
             </Route>
           </Switch>
 
