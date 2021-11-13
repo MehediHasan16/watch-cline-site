@@ -9,6 +9,7 @@ const useFirebase = () => {
     const [user, setUser] = useState({});
     const [isLoadingSpinara, setisLoadingSpinara] = useState(true);
     const [error, setError] = useState('');
+    const [admin, setAdmin] = useState(false);
     const GoogleProvider = new GoogleAuthProvider();
 
     const auth = getAuth();
@@ -59,6 +60,12 @@ const useFirebase = () => {
 
     }
 
+    useEffect(() => {
+        fetch(`http://localhost:5000/usersData/${user?.email}`)
+            .then(res => res.json())
+            .then(result => setAdmin(result.admin))
+    }
+        , [user?.email])
 
     const userLogout = () => {
         setisLoadingSpinara(true);
@@ -105,7 +112,7 @@ const useFirebase = () => {
     const saveUserData = (email, displayName, method) => {
         const user = { email, displayName };
         fetch("http://localhost:5000/usersData", {
-            method: "POST",
+            method: method,
             headers: { "content-type": "application/json" },
             body: JSON.stringify(user)
 
@@ -116,6 +123,7 @@ const useFirebase = () => {
         user,
         isLoadingSpinara,
         error,
+        admin,
         singInwithGoogleAuthentication,
         newRegisterUser,
         userLogout,

@@ -1,14 +1,4 @@
-// import React from 'react';
 
-// const Dashboard = () => {
-//     return (
-//         <div>
-
-//         </div>
-//     );
-// };
-
-// export default Dashboard;
 
 import * as React from 'react';
 import PropTypes from 'prop-types';
@@ -44,12 +34,14 @@ import MyOrders from '../MyOrders/MyOrders';
 import ReviewAdd from '../ReviewAdd/ReviewAdd';
 import PayBill from '../PayBill/PayBill';
 import ManageProduct from '../ManageProduct/ManageProduct';
+import AddProducts from '../../Shared/AddProducts/AddProducts';
+import ManageAllOrders from '../ManageAllOrders/ManageAllOrders';
 
 const drawerWidth = 220;
 
 function Dashboard(props) {
     let { path, url } = useRouteMatch();
-    const { userLogout } = useAuth();
+    const { userLogout, admin } = useAuth();
     const { window } = props;
     const [mobileOpen, setMobileOpen] = React.useState(false);
 
@@ -66,15 +58,24 @@ function Dashboard(props) {
 
                 <NavLink style={{ textDecoration: 'none', fontWeight: 700, color: '#5B6569', textAlign: "left" }} to={`${url}`}><Button color="inherit">Dashboard</Button></NavLink><br />
 
-                <NavLink style={{ textDecoration: 'none', fontWeight: 700, color: '#5B6569', textAlign: "left" }} to={`${url}/myOrders`}><Button color="inherit">My Orders</Button></NavLink><br />
-                <NavLink style={{ textDecoration: 'none', fontWeight: 700, color: '#5B6569', textAlign: "left" }} to={`${url}/reviewAdd`}><Button color="inherit">Review</Button></NavLink><br />
-                <NavLink style={{ textDecoration: 'none', fontWeight: 700, color: '#5B6569', textAlign: "left" }} to={`${url}/payBill`}><Button color="inherit">Pay Bill</Button></NavLink><br />
+                <Box><NavLink style={{ textDecoration: 'none', fontWeight: 700, color: '#5B6569', textAlign: "left" }} to={`${url}/myOrders`}><Button color="inherit">My Orders</Button></NavLink><br />
+
+                    <NavLink style={{ textDecoration: 'none', fontWeight: 700, color: '#5B6569', textAlign: "left" }} to={`${url}/reviewAdd`}><Button color="inherit">Review</Button></NavLink><br />
+                    <NavLink style={{ textDecoration: 'none', fontWeight: 700, color: '#5B6569', textAlign: "left" }} to={`${url}/payBill`}><Button color="inherit">Pay Bill</Button></NavLink><br /></Box>
 
 
 
-                <NavLink style={{ textDecoration: 'none', fontWeight: 700, color: '#5B6569', textAlign: "left" }} to={`${url}/makeAdmin`}><Button color="inherit">Make Admin</Button></NavLink><br />
+                {admin && <Box>
+                    <NavLink style={{ textDecoration: 'none', fontWeight: 700, color: '#5B6569', textAlign: "left" }} to={`${url}/makeAdmin`}><Button color="inherit">Make Admin</Button></NavLink><br />
 
-                <NavLink style={{ textDecoration: 'none', fontWeight: 700, color: '#5B6569', textAlign: "left" }} to={`${url}/manageProducts`}><Button color="inherit">Manage Products</Button></NavLink><br />
+
+                    <NavLink style={{ textDecoration: 'none', fontWeight: 700, color: '#5B6569', textAlign: "left" }} to={`${url}/addProducts`}><Button color="inherit">Add To Porducts</Button></NavLink><br />
+
+                    <NavLink style={{ textDecoration: 'none', fontWeight: 700, color: '#5B6569', textAlign: "left" }} to={`${url}/manageProducts`}><Button color="inherit">Manage Products</Button></NavLink><br />
+
+                    <NavLink style={{ textDecoration: 'none', fontWeight: 700, color: '#5B6569', textAlign: "left" }} to={`${url}/manageAllOrders`}><Button color="inherit">Manage All Orders</Button></NavLink><br />
+                </Box>}
+
                 <Button style={{ textDecoration: 'none', fontWeight: 700, color: '#5B6569' }} onClick={userLogout} color="inherit">Logout</Button>
             </Box>
 
@@ -169,6 +170,12 @@ function Dashboard(props) {
                     </Route>
                     <Route path={`${path}/manageProducts`}>
                         <ManageProduct></ManageProduct>
+                    </Route>
+                    <Route path={`${path}/manageAllOrders`}>
+                        <ManageAllOrders></ManageAllOrders>
+                    </Route>
+                    <Route path={`${path}/addProducts`}>
+                        <AddProducts></AddProducts>
                     </Route>
 
                 </Switch>

@@ -38,9 +38,7 @@ function App() {
             <Route path="/register">
               <Register></Register>
             </Route>
-            <Route path="/addProducts">
-              <AddProducts></AddProducts>
-            </Route>
+
             <Route path="/exploreProducts">
               <ExploreAllProducts></ExploreAllProducts>
             </Route>

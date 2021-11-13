@@ -1,3 +1,15 @@
+// import React from 'react';
+
+// const ManageAllOrders = () => {
+//     return (
+//         <div>
+//             <h1>this manage all orders </h1>
+//         </div>
+//     );
+// };
+
+// export default ManageAllOrders;
+
 import React, { useEffect, useState } from 'react';
 import useAuth from '../../../hooks/useAuth';
 import Table from '@mui/material/Table';
@@ -9,20 +21,22 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { Button } from '@mui/material';
 
-const MyOrders = () => {
+const ManageAllOrders = () => {
     const { user } = useAuth();
-    const [productPurchase, setProductPurchase] = useState([]);
-    const [isCancel, setIsCancel] = useState(null)
+    const [allPurchase, setProductPurchase] = useState([]);
+    const [isChange, setIsChange] = useState(null)
+
 
 
     useEffect(() => {
-        fetch(`http://localhost:5000/myOrders/${user?.email}`)
+        fetch("http://localhost:5000/allPurchase")
             .then(res => res.json())
-            .then(result => setProductPurchase(result));
-    }, [productPurchase, isCancel])
+            .then(result => setProductPurchase(result))
+    }, [allPurchase, isChange])
     const handelDeleteProduct = (id) => {
+        console.log('alm', id);
         console.log('delete oreder', id);
-        fetch(`http://localhost:5000/deleteProduct/${id}`, {
+        fetch(`http://localhost:5000/manageProductCancel/${id}`, {
             method: "DELETE",
             headers: { "content-type": "application/json" },
 
@@ -30,21 +44,42 @@ const MyOrders = () => {
             .then(res => res.json())
             .then(result => {
                 if (result?.deletedCount > 0) {
-                    setIsCancel(true);
+                    setIsChange(true);
                     alert('Are Your Cancel This Order???')
                 }
                 else {
-                    setIsCancel(false);
+                    setIsChange(false);
                 }
 
 
-                console.log(result)
+
             })
+
+    }
+
+    const handelApprovedProduct = (id) => {
+        console.log('approved', id);
+        fetch(`http://localhost:5000/approvedProduct/${id}`, {
+            method: "PUT",
+            headers: { "content-type": "application/json" },
+        })
+            .then(res => res.json())
+            .then(result => {
+                if (result.modifiedCount > 0) {
+                    setIsChange(true);
+                    alert('Shipped the Product Successfully')
+                }
+                else {
+                    setIsChange(false);
+                }
+
+                console.log(result)
+            });
 
     }
     return (
         <div>
-            <h1>My orders </h1>
+            <h1>Manage all  orders </h1>
             <TableContainer component={Paper}>
                 <Table sx={{ minWidth: 650 }} aria-label="simple table">
                     <TableHead>
@@ -55,12 +90,14 @@ const MyOrders = () => {
                             <TableCell align="right">Product Name</TableCell>
                             <TableCell align="right">Price</TableCell>
                             <TableCell align="right">Status Bar</TableCell>
+                            <TableCell align="right">Approved</TableCell>
                             <TableCell align="right">Cancel Order</TableCell>
+
 
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {productPurchase.map((row, index) => (
+                        {allPurchase.map((row, index) => (
                             <TableRow
                                 key={row._id}
                                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
@@ -72,6 +109,7 @@ const MyOrders = () => {
                                 <TableCell align="right">{row?.productTitle}</TableCell>
                                 <TableCell align="right">{row?.price}</TableCell>
                                 <TableCell align="right">{row?.status}</TableCell>
+                                <TableCell align="right"><Button onClick={() => handelApprovedProduct(row?._id)} variant="outlined">Approved</Button></TableCell>
                                 <TableCell align="right"><Button onClick={() => handelDeleteProduct(row?._id)} variant="outlined">Delete</Button></TableCell>
                             </TableRow>
                         ))}
@@ -83,4 +121,4 @@ const MyOrders = () => {
     );
 };
 
-export default MyOrders;
+export default ManageAllOrders;

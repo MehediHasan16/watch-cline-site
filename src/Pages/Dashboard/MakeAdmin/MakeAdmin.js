@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 
 const MakeAdmin = () => {
     const [email, setEmail] = useState('');
+
     const handleOnChange = (e) => {
         setEmail(e.target.value)
     }
