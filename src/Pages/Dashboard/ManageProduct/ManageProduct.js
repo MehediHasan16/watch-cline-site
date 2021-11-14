@@ -35,7 +35,7 @@ const ManageProduct = () => {
     }, [products, isCancel]);
     const handelDeleteProduct = (id) => {
         console.log('delete oreder', id);
-        fetch(`http://localhost:5000/manageProductCancel/${id}`, {
+        fetch(`http://localhost:5000/manageProductDelete/${id}`, {
             method: "DELETE",
             headers: { "content-type": "application/json" },
 
