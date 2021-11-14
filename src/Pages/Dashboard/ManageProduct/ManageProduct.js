@@ -29,13 +29,13 @@ const ManageProduct = () => {
     const [products, setProducts] = useState();
     const [isCancel, setIsCancel] = useState(null)
     useEffect(() => {
-        fetch("http://localhost:5000/exploreProducts")
+        fetch("https://afternoon-forest-44332.herokuapp.com/exploreProducts")
             .then(res => res.json())
             .then(result => setProducts(result))
     }, [products, isCancel]);
     const handelDeleteProduct = (id) => {
         console.log('delete oreder', id);
-        fetch(`http://localhost:5000/manageProductDelete/${id}`, {
+        fetch(`https://afternoon-forest-44332.herokuapp.com/manageProductDelete/${id}`, {
             method: "DELETE",
             headers: { "content-type": "application/json" },
 

@@ -31,7 +31,7 @@ const ProductDetaile = () => {
         data.status = 'Padding'
 
 
-        fetch("http://localhost:5000/addProductOrder", {
+        fetch("https://afternoon-forest-44332.herokuapp.com/addProductOrder", {
             method: "POST",
             headers: { "content-type": "application/json" },
             body: JSON.stringify(data)
@@ -53,7 +53,7 @@ const ProductDetaile = () => {
 
 
     useEffect(() => {
-        fetch(`http://localhost:5000/singleProduct/${productId}`)
+        fetch(`https://afternoon-forest-44332.herokuapp.com/singleProduct/${productId}`)
             .then(res => res.json())
             .then(result => setDetailProduct(result))
     }, [])

@@ -19,14 +19,14 @@ const ManageAllOrders = () => {
 
 
     useEffect(() => {
-        fetch("http://localhost:5000/allPurchase")
+        fetch("https://afternoon-forest-44332.herokuapp.com/allPurchase")
             .then(res => res.json())
             .then(result => setProductPurchase(result))
     }, [allPurchase, isChange])
     const handelDeleteProduct = (id) => {
         console.log('alm', id);
         console.log('delete oreder', id);
-        fetch(`http://localhost:5000/manageProductCancel/${id}`, {
+        fetch(`https://afternoon-forest-44332.herokuapp.com/manageProductCancel/${id}`, {
             method: "DELETE",
             headers: { "content-type": "application/json" },
 
@@ -49,7 +49,7 @@ const ManageAllOrders = () => {
 
     const handelApprovedProduct = (id) => {
         console.log('approved', id);
-        fetch(`http://localhost:5000/approvedProduct/${id}`, {
+        fetch(`https://afternoon-forest-44332.herokuapp.com/approvedProduct/${id}`, {
             method: "PUT",
             headers: { "content-type": "application/json" },
         })

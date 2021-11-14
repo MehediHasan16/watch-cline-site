@@ -28,7 +28,7 @@ const ReviewInfo = () => {
     const [products, setProducts] = useState();
     const [value, setValue] = useState('');
     useEffect(() => {
-        fetch("http://localhost:5000/reviewInfo")
+        fetch("https://afternoon-forest-44332.herokuapp.com/reviewInfo")
             .then(res => res.json())
             .then(result => setProducts(result))
     }, [])

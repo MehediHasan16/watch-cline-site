@@ -15,7 +15,7 @@ import { Link } from 'react-router-dom';
 const ProductsLimite = () => {
     const [products, setProducts] = useState();
     useEffect(() => {
-        fetch("http://localhost:5000/limitProducts")
+        fetch("https://afternoon-forest-44332.herokuapp.com/limitProducts")
             .then(res => res.json())
             .then(result => setProducts(result))
     }, [])

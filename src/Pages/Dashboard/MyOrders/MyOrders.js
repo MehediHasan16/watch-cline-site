@@ -16,13 +16,13 @@ const MyOrders = () => {
 
 
     useEffect(() => {
-        fetch(`http://localhost:5000/myOrders/${user?.email}`)
+        fetch(`https://afternoon-forest-44332.herokuapp.com/myOrders/${user?.email}`)
             .then(res => res.json())
             .then(result => setProductPurchase(result));
     }, [productPurchase, isCancel])
     const handelDeleteProduct = (id) => {
         console.log('delete oreder', id);
-        fetch(`http://localhost:5000/deleteProduct/${id}`, {
+        fetch(`https://afternoon-forest-44332.herokuapp.com/deleteProduct/${id}`, {
             method: "DELETE",
             headers: { "content-type": "application/json" },
 
