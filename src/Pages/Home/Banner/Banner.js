@@ -1,4 +1,4 @@
-import { Container, Grid, Typography } from '@mui/material';
+import { Button, Container, Grid, Typography } from '@mui/material';
 import React from 'react';
 
 
@@ -9,10 +9,11 @@ const Banner = () => {
     }
     return (
         <div style={bannerBg}>
-            <Container>
+            <Container sx={{ my: 2 }}>
                 <Grid container spacing={2} sx={{ alignItems: 'center' }}>
                     <Grid item xs={12} md={4} lg={4} >
                         <Typography variant="h3" style={{ fontWeight: 600, color: '#475151' }}>Don't Miss The <br /> Moment</Typography>
+                        <Button sx={{ my: 4 }} variant="outlined">BUY NOW</Button>
                     </Grid>
                     <Grid item xs={12} md={8} lg={8}>
                         <img style={{ width: '100%' }} src="https://cdn.shopify.com/s/files/1/0248/7114/1461/files/slide_2.jpg?v=1577085363" alt="" />

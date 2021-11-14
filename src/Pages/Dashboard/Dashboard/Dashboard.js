@@ -58,10 +58,10 @@ function Dashboard(props) {
 
                 <NavLink style={{ textDecoration: 'none', fontWeight: 700, color: '#5B6569', textAlign: "left" }} to={`${url}`}><Button color="inherit">Dashboard</Button></NavLink><br />
 
-                <Box><NavLink style={{ textDecoration: 'none', fontWeight: 700, color: '#5B6569', textAlign: "left" }} to={`${url}/myOrders`}><Button color="inherit">My Orders</Button></NavLink><br />
+                {!admin && <Box><NavLink style={{ textDecoration: 'none', fontWeight: 700, color: '#5B6569', textAlign: "left" }} to={`${url}/myOrders`}><Button color="inherit">My Orders</Button></NavLink><br />
 
                     <NavLink style={{ textDecoration: 'none', fontWeight: 700, color: '#5B6569', textAlign: "left" }} to={`${url}/reviewAdd`}><Button color="inherit">Review</Button></NavLink><br />
-                    <NavLink style={{ textDecoration: 'none', fontWeight: 700, color: '#5B6569', textAlign: "left" }} to={`${url}/payBill`}><Button color="inherit">Pay Bill</Button></NavLink><br /></Box>
+                    <NavLink style={{ textDecoration: 'none', fontWeight: 700, color: '#5B6569', textAlign: "left" }} to={`${url}/payBill`}><Button color="inherit">Pay Bill</Button></NavLink><br /></Box>}
 
 
 
@@ -75,8 +75,8 @@ function Dashboard(props) {
 
                     <NavLink style={{ textDecoration: 'none', fontWeight: 700, color: '#5B6569', textAlign: "left" }} to={`${url}/manageAllOrders`}><Button color="inherit">Manage All Orders</Button></NavLink><br />
                 </Box>}
+                <NavLink style={{ textDecoration: 'none', fontWeight: 700, color: '#5B6569', textAlign: "left" }} to='/login'><Button onClick={userLogout} color="inherit">Logout</Button></NavLink><br />
 
-                <Button style={{ textDecoration: 'none', fontWeight: 700, color: '#5B6569' }} onClick={userLogout} color="inherit">Logout</Button>
             </Box>
 
 

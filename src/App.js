@@ -18,6 +18,9 @@ import AddProducts from './Pages/Shared/AddProducts/AddProducts';
 import ExploreAllProducts from './Pages/Home/ExploreAllProducts/ExploreAllProducts';
 import ProductDetaile from './Pages/ProductDetaile/ProductDetaile/ProductDetaile';
 import Dashboard from './Pages/Dashboard/Dashboard/Dashboard';
+import ExplorePage from './Pages/ExplorePage/ExplorePage';
+import PurchasePage from './Pages/PurchasePage/PurchasePage';
+import Error from './Pages/Error/Error';
 
 function App() {
   return (
@@ -40,17 +43,21 @@ function App() {
             </Route>
 
             <Route path="/exploreProducts">
-              <ExploreAllProducts></ExploreAllProducts>
+              <ExplorePage></ExplorePage>
             </Route>
             <PrivateRoute path="/purchase">
               <PurchaseProduct></PurchaseProduct>
             </PrivateRoute>
             <PrivateRoute path="/productDetaile/:productId">
-              <ProductDetaile></ProductDetaile>
+              <PurchasePage></PurchasePage>
             </PrivateRoute>
             <Route path="/dashboard">
               <Dashboard></Dashboard>
             </Route>
+            <Route path="*">
+              <Error></Error>
+            </Route>
+
           </Switch>
 
         </Router>

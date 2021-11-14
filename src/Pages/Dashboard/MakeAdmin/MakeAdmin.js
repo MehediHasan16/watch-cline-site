@@ -1,4 +1,5 @@
 import { Button, TextField } from '@mui/material';
+import { Box } from '@mui/system';
 import React, { useState } from 'react';
 
 const MakeAdmin = () => {
@@ -27,14 +28,14 @@ const MakeAdmin = () => {
         e.preventDefault();
     }
     return (
-        <div>
+        <Box sx={{ boxShadow: 2 }}>
             <h1>Make an admin</h1>
             <form onSubmit={handleMakeAdminSubmit}>
                 <TextField sx={{ width: "55%", m: 3 }} onChange={handleOnChange} type="email" label="email" variant="filled" /><br />
                 <Button type="submit" variant="outlined">Make Admin</Button>
 
             </form>
-        </div>
+        </Box>
     );
 };
 
