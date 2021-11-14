@@ -1,14 +1,4 @@
-// import React from 'react';
 
-// const ManageAllOrders = () => {
-//     return (
-//         <div>
-//             <h1>this manage all orders </h1>
-//         </div>
-//     );
-// };
-
-// export default ManageAllOrders;
 
 import React, { useEffect, useState } from 'react';
 import useAuth from '../../../hooks/useAuth';
