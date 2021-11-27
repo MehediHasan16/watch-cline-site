@@ -4,7 +4,6 @@ import React, { useState } from 'react';
 import { NavLink, useHistory } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
 
-
 const Register = () => {
     const [registerInfo, setRegisterInfo] = useState({});
     const { newRegisterUser, isLoadingSpinara, user, error } = useAuth();
@@ -16,6 +15,7 @@ const Register = () => {
         currentLoginInfo[field] = value;
         setRegisterInfo(currentLoginInfo)
         console.log(registerInfo);
+
 
 
     }
